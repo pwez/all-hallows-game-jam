@@ -8,7 +8,8 @@ namespace Players.States
         public PlayerStateMachine(IPlayer player) : base(player) {
             States = new Dictionary<Type, IState<IPlayer>> {
                 { typeof(IdlingState), new IdlingState() },
-                { typeof(MovingState), new MovingState() }
+                { typeof(MovingState), new MovingState() },
+                { typeof(ScaredState), new ScaredState() }
             };
             CurrentStateType = typeof(IdlingState);
         }

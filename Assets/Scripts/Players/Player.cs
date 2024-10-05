@@ -25,7 +25,7 @@ namespace Players {
             Controller.ReceiveInput();
             _stateMachine.Resume();
         }
-        
+
         public void SwitchTo<T>() where T : IState<IPlayer> => _stateMachine.SwitchTo<T>();
     }
 }

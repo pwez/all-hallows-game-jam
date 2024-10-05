@@ -9,14 +9,14 @@ namespace Interactables
     
     public class InteractionTrigger : MonoBehaviour {
         public UnityEvent OnPressActionButtonEvent;
-        private IInteractable _interactable;
+        //private IInteractable _interactable;
         
         private void OnTriggerStay(Collider other) {
             Debug.Log("Entered into " + name);
             if (!IsPlayer(other, out var player)) return;
             if (!IsPressingInteractButton(player)) return;
             
-            _interactable.OnInteract();
+            //_interactable.OnInteract();
             OnPressActionButtonEvent.Invoke();
         }
 

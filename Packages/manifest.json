@@ -4,9 +4,17 @@
     "com.unity.ide.rider": "3.0.31",
     "com.unity.ide.visualstudio": "2.0.22",
     "com.unity.ide.vscode": "1.2.5",
+<<<<<<< HEAD
+    "com.unity.probuilder": "5.2.3",
+    "com.unity.progrids": "3.0.3-preview.6",
+    "com.unity.render-pipelines.universal": "14.0.11",
+    "com.unity.test-framework": "1.1.33",
+    "com.unity.textmeshpro": "3.0.9",
+=======
     "com.unity.render-pipelines.universal": "14.0.11",
     "com.unity.test-framework": "1.1.33",
     "com.unity.textmeshpro": "3.0.7",
+>>>>>>> b9fb7124a0e92c88220e2ac54633a45e891b86ca
     "com.unity.timeline": "1.7.6",
     "com.unity.ugui": "1.0.0",
     "com.unity.visualscripting": "1.9.4",

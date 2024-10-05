@@ -7,7 +7,6 @@ namespace Players.Physics {
 
         [Header("Parameters")]
         [SerializeField] private float speed;
-        [SerializeField] private Vector3 velocity;
         
         private Collider _collider;
         private Rigidbody _rigidbody;
@@ -17,8 +16,11 @@ namespace Players.Physics {
             _rigidbody = GetComponent<Rigidbody>();
         }
 
-        public Vector3 Velocity { get => velocity; set => velocity = value; }
-        
+        public Vector3 Velocity {
+            get => _rigidbody.velocity;
+            set => _rigidbody.velocity = value;
+        }
+
         public void Accelerate(Vector3 direction) {
             _rigidbody.velocity = speed * direction;
         }

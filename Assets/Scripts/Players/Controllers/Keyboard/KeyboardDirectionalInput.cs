@@ -19,8 +19,8 @@ namespace Players.Controllers.Keyboard
             X = Input.GetKey(_upKeyCode) ? 1f : 
                 Input.GetKey(_downKeyCode) ? -1f 
                 : 0;
-            Z = Input.GetKey(_rightKeyCode) ? 1f : 
-                Input.GetKey(_leftKeyCode) ? -1f 
+            Z = Input.GetKey(_rightKeyCode) ? -1f : 
+                Input.GetKey(_leftKeyCode) ? 1f 
                 : 0;
         }
 

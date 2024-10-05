@@ -22,7 +22,10 @@ namespace Players.Physics {
         }
 
         public void Accelerate(Vector3 direction) {
-            _rigidbody.velocity = speed * direction;
+            var forward = transform.TransformDirection(Vector3.forward); // Direction the player is facing
+            var right = transform.TransformDirection(Vector3.right);
+            var velocity = forward * direction.z + right * direction.x;
+            transform.position += velocity * Time.deltaTime;
         }
     }
 }

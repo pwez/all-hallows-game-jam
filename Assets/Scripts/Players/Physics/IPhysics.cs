@@ -1,6 +1,8 @@
-namespace Players.Physics
-{
+using UnityEngine;
+
+namespace Players.Physics {
     public interface IPhysics {
-        void Simulate();
+        Vector3 Velocity { get; set; }
+        void Accelerate(Vector3 direction);
     }
 }

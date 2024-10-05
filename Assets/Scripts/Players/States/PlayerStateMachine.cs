@@ -10,6 +10,7 @@ namespace Players.States
                 { typeof(IdlingState), new IdlingState() },
                 { typeof(MovingState), new MovingState() }
             };
+            CurrentStateType = typeof(IdlingState);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Interactables
         }
 
         private bool IsPressingInteractButton(IPlayer player) {
-            return false;
+            return player.Controller.ActionInput.IsPressed;
         }
 
         private bool IsPlayer(Collider other, out IPlayer player) {

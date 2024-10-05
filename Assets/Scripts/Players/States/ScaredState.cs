@@ -1,7 +1,6 @@
 using UnityEngine;
 
-namespace Players.States
-{
+namespace Players.States {
     public class ScaredState : PlayerState
     {
         public override void OnEnterBy(IPlayer player)

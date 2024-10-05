@@ -8,12 +8,18 @@ namespace Interactables
 
     // The following is an example of how we can implement a general interactable mechanic
 
-    public class Blender : MonoBehaviour, IInteractable
-    {
-        public void OnInteract()
-        {
-            //
+    public class Blender : MonoBehaviour, IInteractable {
+        
+        public void OnInteract() {
             throw new NotImplementedException();
+        }
+
+        public void TurnOn() {
+            Debug.Log("Blender On");
+        }
+        
+        public void TurnOff() {
+            Debug.Log("Blender Off");
         }
 
     }

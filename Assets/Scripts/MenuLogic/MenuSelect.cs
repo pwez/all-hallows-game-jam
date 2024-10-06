@@ -8,7 +8,7 @@ public class MenuSelect : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Office Floorplan Backup");
     }
 
     public void QuitGame()

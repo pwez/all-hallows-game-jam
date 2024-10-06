@@ -365,7 +365,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Objective: Destroy all the servers before getting caught.
+  m_text: 'Objective: Destroy all the flashing servers before getting caught.
 
 
     Watch

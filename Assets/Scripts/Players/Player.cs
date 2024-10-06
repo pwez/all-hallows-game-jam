@@ -13,11 +13,13 @@ namespace Players {
         public IController Controller { get; private set; }
         public IPhysics Physics { get; private set; }
         public IStateMachine<IPlayer> StateMachine { get; private set; }
-        
+        public PlayerSoundManager PlayerSoundManager { get; private set; }
+
         private void Awake() {
             Controller = GetComponent<IController>();
             Physics = GetComponent<IPhysics>();
             StateMachine = new PlayerStateMachine(this);
+            PlayerSoundManager = GetComponent<PlayerSoundManager>();
         }
 
         private void Update() {

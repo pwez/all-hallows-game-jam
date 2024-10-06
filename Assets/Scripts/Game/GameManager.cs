@@ -2,29 +2,20 @@ using System;
 using Players;
 using Players.States;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 namespace Game {
     public class GameManager : MonoBehaviour {
 
+        public string sceneToReload;
         public Player player;
         public GameUI gameUI;
         public Transform[] teleportPositions;
         public GoalTrigger[] goalTriggers;
-        public int triggeredGoals;
-
-        public static GameManager Instance { get; private set; }
-
-        private void Awake() {
-            if (Instance != null && Instance != this) {
-                Destroy(gameObject);
-                return;
-            }
-            Instance = this; 
-            DontDestroyOnLoad(gameObject);
-        }
         
-        
+        private int _triggeredGoals;
+
         private void Start() {
             player.StateMachine.SwitchStateEvent.AddListener(OnSwitchState);
         }
@@ -39,23 +30,18 @@ namespace Game {
         }
 
         public void OnGoalReached() {
-            Debug.Log("A goal has been triggered");
-            triggeredGoals++;
-            var allGoalsTriggered = triggeredGoals == goalTriggers.Length;
-            if (!allGoalsTriggered) return;
+            _triggeredGoals++;
+            var allGoalsReached = _triggeredGoals == goalTriggers.Length;
+            if (!allGoalsReached) return;
 
-            Debug.Log("All Goals Triggered");
             gameUI.gameObject.SetActive(true);
         }
 
         public void Restart() {
-            Debug.Log("Restarting game");
-            
-            triggeredGoals = 0;
-            foreach (var goalTrigger in goalTriggers) goalTrigger.wasTriggered = false;
-            
-            // TODO reset player position
+            _triggeredGoals = 0;
+            Cursor.lockState = CursorLockMode.Locked;
+            SceneManager.LoadScene(sceneToReload);
         }
-
+        
     }
 }

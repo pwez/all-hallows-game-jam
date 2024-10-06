@@ -25,7 +25,7 @@ namespace Players.Physics {
             var forward = transform.TransformDirection(Vector3.forward); // Direction the player is facing
             var right = transform.TransformDirection(Vector3.right);
             var velocity = forward * direction.z + right * direction.x;
-            transform.position += velocity * Time.deltaTime;
+            transform.position += velocity * (speed * Time.deltaTime);
         }
     }
 }

@@ -10,22 +10,26 @@ namespace Interactables
     public class ScareTrigger : MonoBehaviour
     {
         //public UnityEvent OnPressActionButtonEvent;
-        
+        [SerializeField] GameObject _blender;
+        [SerializeField] GameObject _player;
 
         private void OnTriggerEnter(Collider other)
         {
-            //Debug.Log("Entered into " + name);
             if (!IsPlayer(other, out var player)) return;
 
             this.transform.parent.GetComponent<Blender>().TurnOn();
+            _player.transform.LookAt(_blender.transform);
             player.SwitchTo<ScaredState>();
+
+            // Fade to black here?
+
         }
 
         private void OnTriggerExit(Collider other)
         {
-            //Debug.Log("Entered into " + name);
             if (!IsPlayer(other, out var player)) return;
 
+            _player.transform.eulerAngles = new Vector3(0, 0, 0);
             this.transform.parent.GetComponent<Blender>().TurnOff();
         }
 

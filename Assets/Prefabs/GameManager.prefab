@@ -45,3 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  gameUI: {fileID: 0}
+  teleportPositions: []
+  goalTriggers:
+  - {fileID: 0}
+  triggeredGoals: 0

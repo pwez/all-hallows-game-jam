@@ -4,6 +4,7 @@ using UnityEngine;
 namespace Game {
     public class GoalTrigger : MonoBehaviour {
 
+        public GameManager gameManager;
         public bool wasTriggered;
         
         private void OnTriggerStay(Collider other) {
@@ -15,7 +16,7 @@ namespace Game {
             var actionInputIsPressed = player.Controller.ActionInput.IsHeld;
             if (!actionInputIsPressed) return;
             
-            GameManager.Instance.OnGoalReached();
+            gameManager.OnGoalReached();
             wasTriggered = true;
         }
     }

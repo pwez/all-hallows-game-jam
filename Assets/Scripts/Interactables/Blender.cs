@@ -31,11 +31,7 @@ namespace Interactables {
             _audioSource.Stop();
             _audioSource.clip = null;
         }
-
-        public void Disable() {
-            Destroy(gameObject);
-        }
-
+        
     }
 
 }

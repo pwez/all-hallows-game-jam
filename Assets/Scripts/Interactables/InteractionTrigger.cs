@@ -11,11 +11,10 @@ namespace Interactables
         public UnityEvent OnPressActionButtonEvent;
         
         private void OnTriggerStay(Collider other) {
-            //Debug.Log("Entered into " + name);
             if (!IsPlayer(other, out var player)) return;
             if (!IsPressingInteractButton(player)) return;
             
-            OnPressActionButtonEvent.Invoke();
+            Destroy(gameObject.transform.parent.gameObject);
         }
 
         private bool IsPressingInteractButton(IPlayer player) {

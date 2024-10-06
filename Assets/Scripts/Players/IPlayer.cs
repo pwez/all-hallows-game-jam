@@ -8,6 +8,7 @@ namespace Players
         IController Controller { get; }
         IPhysics Physics { get; }
         IStateMachine<IPlayer> StateMachine { get; }
+        PlayerSoundManager PlayerSoundManager {get;}
         void SwitchTo<T>() where T : IState<IPlayer>;
     }
 }

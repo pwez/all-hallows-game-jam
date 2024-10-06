@@ -16,7 +16,7 @@ namespace Interactables
         private void OnTriggerEnter(Collider other)
         {
             if (!IsPlayer(other, out var player)) return;
-            StartCoroutine(JumpScared(other));
+            StartCoroutine(JumpScared(player));
             // Fade to black here?
 
         }
@@ -35,13 +35,13 @@ namespace Interactables
             return other.TryGetComponent<IPlayer>(out player);
         }
 
-        IEnumerator JumpScared(Collider other)
+        IEnumerator JumpScared(IPlayer player)
         {
-            this.transform.parent.GetComponent<Blender>().TurnOn();
-            _player.transform.LookAt(_blender.transform);
-            yield return new WaitForSeconds(2);
-            IsPlayer(other, out var player);
             player.SwitchTo<ScaredState>();
+            _player.transform.LookAt(_blender.transform);
+            this.transform.parent.GetComponent<Blender>().TurnOn();
+
+            yield return new WaitForSeconds(2);    
         }
     }
 

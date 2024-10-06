@@ -8,6 +8,7 @@ namespace Players.States {
             base.OnEnterBy(player);
             //player.Physics.Velocity = Vector3.zero;
             Debug.Log("Scared State");
+            player.PlayerSoundManager.PlayScaredSoundEffect();
         }
 
         public override void OnResumeBy(IPlayer player)

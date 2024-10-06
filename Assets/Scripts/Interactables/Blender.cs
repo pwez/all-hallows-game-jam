@@ -17,7 +17,7 @@ namespace Interactables {
         }
 
         public void Start() {
-            _animator.Play("idle");
+            _animator.Play("being-scary");
             TurnOff();
         }
 
@@ -25,13 +25,11 @@ namespace Interactables {
             _audioSource.clip = blendingAudioClip;
             _audioSource.time = 1.3f;
             _audioSource.Play();
-            _animator.Play("being-scary");
         }
         
         public void TurnOff() {
             _audioSource.Stop();
             _audioSource.clip = null;
-            _animator.Play("idle");
         }
 
         public void Disable() {

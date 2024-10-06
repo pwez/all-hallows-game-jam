@@ -21,6 +21,8 @@ namespace Players.Physics {
             set => _rigidbody.velocity = value;
         }
 
+        public Vector3 Position { get => transform.position; set => transform.position = value; }
+
         public void Accelerate(Vector3 direction) {
             var forward = transform.TransformDirection(Vector3.forward); // Direction the player is facing
             var right = transform.TransformDirection(Vector3.right);

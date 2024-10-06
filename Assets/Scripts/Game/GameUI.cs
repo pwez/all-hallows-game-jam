@@ -11,6 +11,7 @@ namespace Game {
         public void OnEnable() {
             text.text = "Goal Reached!";
             animator.Play("fade");
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 }

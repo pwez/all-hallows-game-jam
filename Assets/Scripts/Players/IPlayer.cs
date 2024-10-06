@@ -7,6 +7,7 @@ namespace Players
     public interface IPlayer {
         IController Controller { get; }
         IPhysics Physics { get; }
+        IStateMachine<IPlayer> StateMachine { get; }
         void SwitchTo<T>() where T : IState<IPlayer>;
     }
 }

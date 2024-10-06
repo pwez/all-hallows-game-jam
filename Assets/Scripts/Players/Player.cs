@@ -12,20 +12,20 @@ namespace Players {
         
         public IController Controller { get; private set; }
         public IPhysics Physics { get; private set; }
-
-        private IStateMachine<IPlayer> _stateMachine;
-
+        public IStateMachine<IPlayer> StateMachine { get; private set; }
+        
         private void Awake() {
             Controller = GetComponent<IController>();
             Physics = GetComponent<IPhysics>();
-            _stateMachine = new PlayerStateMachine(this);
+            StateMachine = new PlayerStateMachine(this);
         }
 
         private void Update() {
             Controller.ReceiveInput();
-            _stateMachine.Resume();
+            StateMachine.Resume();
         }
 
-        public void SwitchTo<T>() where T : IState<IPlayer> => _stateMachine.SwitchTo<T>();
+        public void SwitchTo<T>() where T : IState<IPlayer> => StateMachine.SwitchTo<T>();
+        
     }
 }

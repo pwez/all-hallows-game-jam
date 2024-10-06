@@ -1,12 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace Interactables
 {
+    [RequireComponent(typeof(AudioSource))]
     public class Vacuum : MonoBehaviour
     {
+        [Header("Vacuum SFX")]
+        public AudioClip audioClip;
+
+        private AudioSource _audioSource;
+        
+        [Space(5)]
         [SerializeField] bool activateVacuum = false;
         public bool ActivateVacuum
         {
@@ -23,15 +28,19 @@ namespace Interactables
         void Start()
         {
             agent = GetComponent<NavMeshAgent>();
-            //  agent.destination = goal.position;
+            _audioSource = GetComponent<AudioSource>();
         }
 
         void OnTriggerEnter()
         {
+            _audioSource.clip = audioClip;
+            _audioSource.Play();
             ActivateVacuum = true;
         }
         void OnTriggerExit()
         {
+            _audioSource.clip = null;
+            _audioSource.Stop();
             ActivateVacuum = false;
         }
         // Update is called once per frame

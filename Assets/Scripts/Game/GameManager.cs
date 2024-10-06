@@ -8,8 +8,22 @@ namespace Game {
     public class GameManager : MonoBehaviour {
 
         public Player player;
+        public GameUI gameUI;
+        public Transform[] teleportPositions;
+        public GoalTrigger[] goalTriggers;
+        public int triggeredGoals;
 
-        public Transform[] teleportPositions; 
+        public static GameManager Instance { get; private set; }
+
+        private void Awake() {
+            if (Instance != null && Instance != this) {
+                Destroy(gameObject);
+                return;
+            }
+            Instance = this; 
+            DontDestroyOnLoad(gameObject);
+        }
+        
         
         private void Start() {
             player.StateMachine.SwitchStateEvent.AddListener(OnSwitchState);
@@ -23,5 +37,25 @@ namespace Game {
             
             player.SwitchTo<IdlingState>();
         }
+
+        public void OnGoalReached() {
+            Debug.Log("A goal has been triggered");
+            triggeredGoals++;
+            var allGoalsTriggered = triggeredGoals == goalTriggers.Length;
+            if (!allGoalsTriggered) return;
+
+            Debug.Log("All Goals Triggered");
+            gameUI.gameObject.SetActive(true);
+        }
+
+        public void Restart() {
+            Debug.Log("Restarting game");
+            
+            triggeredGoals = 0;
+            foreach (var goalTrigger in goalTriggers) goalTrigger.wasTriggered = false;
+            
+            // TODO reset player position
+        }
+
     }
 }
